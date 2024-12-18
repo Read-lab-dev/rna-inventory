@@ -1,0 +1,1 @@
+rename 's/\_001.fastq.gz/\.fastq.gz/' *.fastq.gz

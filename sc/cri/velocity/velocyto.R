@@ -1,0 +1,17 @@
+rm(list = ls())
+library(Seurat)
+library(SeuratWrappers)
+setwd("~/rna/sc/cri/velocity/")
+int.seu <- qs::qread("../tumor.qs")
+
+# int.seu <- subset(int.seu,orig.ident=="DMSO")
+colnames(int.seu) <- gsub("-1","x",Cells(int.seu))
+colnames(int.seu) <- gsub("DMSO_","21047FL-120-03-01-01-DMSO:",Cells(int.seu))
+colnames(int.seu) <- gsub("cz_short_","21047FL-120-02-01-01-CzS:",Cells(int.seu))
+colnames(int.seu) <- gsub("cz_long_","21047FL-120-01-01-01-CzL:",Cells(int.seu))
+
+emb <- Embeddings(int.seu, reduction = "umap")
+write.csv(Cells(int.seu), file = "cellID_obs.csv", row.names = F)
+write.csv(emb, file = "cell_embeddings_umap.csv")
+bb <- data.frame(CellID=Cells(int.seu),x=int.seu$state)
+write.csv(bb, file = "clusters.csv",row.names = F)

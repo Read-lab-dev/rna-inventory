@@ -1,0 +1,18 @@
+mac.seu <- subset(int.seu,celltype=="Myeloid"&technique=="fresh")
+mac.seu = NormalizeData(mac.seu,verbose=F,assay = "RNA")
+mac.seu = FindVariableFeatures(mac.seu,selection.method = "vst",nfeatures= 3000,verbose=F)
+mac.seu = ScaleData(mac.seu,verbose=F)
+mac.seu = RunPCA(mac.seu,verbose=F)
+ElbowPlot(mac.seu,ndims = 50)
+mac.seu <- harmony::RunHarmony(mac.seu, group.by.vars = "orig.ident", 
+                               reduction = "pca", assay.use = "RNA", 
+                               reduction.save = "harmony",max_iter=20)
+mac.seu <- RunUMAP(mac.seu,reduction = "harmony",dims = 1:30)
+mac.seu = FindNeighbors(mac.seu,dims=seq(30),verbose=F,reduction = "harmony")
+mac.seu <- FindClusters(mac.seu,resolution = 0.1)
+mac.seu <- JoinLayers(mac.seu)
+DimPlot(mac.seu,reduction = "umap",label = T)
+DotPlot(mac.seu,features = c("Cd86","Mrc1","Cd163","Vegf","Aif1","Ptprc"))
+all.markers <- FindAllMarkers(mac.seu, only.pos = T,logfc.threshold = 1, min.pct = 0.25)
+mac.seu$double <- ifelse(rownames(mac.seu@meta.data)%in%WhichCells(mac.seu,expression=Mrc1>0&Cd86>0),"T","F")
+DimPlot(mac.seu,group.by = "double")
