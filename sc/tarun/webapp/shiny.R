@@ -38,6 +38,6 @@ runApp("gbmnsp/", host ="0.0.0.0",launch.browser=T ,port = 1111)
 
 ##########RSconnect#########
 rsconnect::setAccountInfo(name='read',
-                          token='B0EFE020ACAC80FBC430048482D0DEBE',
-                          secret='GNNim0nag9VQEOlghXDNmSJt5b3ChzY7/2cUPWWb')
+                          token='xxx',
+                          secret='xxx')
 rsconnect::deployApp('gbmnsp/')
