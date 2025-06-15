@@ -45,11 +45,11 @@ runApp("bt109/", host ="0.0.0.0",launch.browser=T ,port = 1111)
 #https://www.shinyapps.io/
 
 rsconnect::setAccountInfo(name='read',
-                          token='7677B492A50DC9247EFEC90F4CB35EB5',
-                          secret='29RD6nuTdxqkni53DfCrR1wp+ai/LM/PHe+TpYl7')
+                          token='xxx',
+                          secret='xxx')
 rsconnect::deployApp('bt109/')
 
-rsconnect::setAccountInfo(name='read', token='751D10E3C10209259EFD63237FF36C75',
-                          secret='Sk3baeMPS3JcuZeqgOgs8i3+x8yADL5h32UKBGhf')
+rsconnect::setAccountInfo(name='read', token='xxx',
+                          secret='xxx')
 
 rsconnect::deployApp('bt109/')
