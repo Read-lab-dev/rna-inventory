@@ -40,6 +40,6 @@ runApp("BT85/", host ="0.0.0.0",launch.browser=T ,port = 1111)
 setwd("/home/hzg/rna/sc/cri/webapp/")
 ##########RSconnect#########
 rsconnect::setAccountInfo(name='read', 
-                          token='7DC568EBA96673A27C55D2FB1A401328', 
-                          secret='Cwhag8n26Gy6mdBJFReu0izyPXNl6zalB+6opyMg')
+                          token='xxx', 
+                          secret='xxx')
 rsconnect::deployApp('BT85/')
